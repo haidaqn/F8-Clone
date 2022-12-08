@@ -1,12 +1,39 @@
-import * as React from 'react';
-import { Stack, Box, Typography } from '@mui/material';
-import { IconAdd, SideBarItem } from './SideBarStyles';
-import HomeIcon from '@mui/icons-material/Home';
+import { SvgIconComponent } from '@mui/icons-material';
 import AddIcon from '@mui/icons-material/Add';
+import EmojiObjectsRoundedIcon from '@mui/icons-material/EmojiObjectsRounded';
+import HomeIcon from '@mui/icons-material/Home';
+import MenuBookSharpIcon from '@mui/icons-material/MenuBookSharp';
+import NewspaperIcon from '@mui/icons-material/Newspaper';
+import { Box, Stack, Typography } from '@mui/material';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { IconAdd, SideBarItem } from './SideBarStyles';
 
 export interface SideBarProps {}
 
+export interface sideBarItem {
+  title: string;
+  icon: SvgIconComponent;
+  link: string;
+}
+
+const listSidebarItem: sideBarItem[] = [
+  { title: 'Home', icon: HomeIcon, link: '/' },
+  { title: 'Lộ trình', icon: MenuBookSharpIcon, link: '/road-map' },
+  { title: 'Học', icon: EmojiObjectsRoundedIcon, link: '/study' },
+  { title: 'Blog', icon: NewspaperIcon, link: '/blog' }
+];
+
 export default function SiderBar(props: SideBarProps) {
+  const navigate = useNavigate();
+  const pathName = useLocation().pathname;
+  console.log(pathName);
+
+  const handleNavigateItem = (link: string): void => {
+    if (link !== pathName) {
+      navigate(`${link}`);
+    }
+  };
+
   return (
     <Stack
       width="96px"
@@ -23,18 +50,20 @@ export default function SiderBar(props: SideBarProps) {
       </Box>
 
       <Stack>
-        <SideBarItem className="active">
-          <HomeIcon />
-          <Typography variant="body1" color="initial" fontSize="12px" fontWeight="600">
-            Home
-          </Typography>
-        </SideBarItem>
-        <SideBarItem className="">
-          <HomeIcon />
-          <Typography variant="body1" color="initial" fontSize="12px" fontWeight="600">
-            Home
-          </Typography>
-        </SideBarItem>
+        {listSidebarItem.map((item) => {
+          return (
+            <SideBarItem
+              className={item.link === pathName ? 'active' : ''}
+              key={JSON.stringify(item)}
+              onClick={() => handleNavigateItem(item.link)}
+            >
+              <item.icon />
+              <Typography variant="body1" color="initial" fontSize="12px" fontWeight="600">
+                {item.title}
+              </Typography>
+            </SideBarItem>
+          );
+        })}
       </Stack>
     </Stack>
   );

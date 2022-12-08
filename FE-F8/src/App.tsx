@@ -3,9 +3,12 @@ import { CssBaseline } from '@mui/material';
 import { ThemeProvider } from '@mui/material/styles';
 import { BrowserRouter as Router } from 'react-router-dom';
 import theme from './utils/theme';
-import HomePageRouting from './modules/HomePage/HomePageRouting';
-import HandBookRouting from './modules/HandBook/HandBookRouting';
 import MainLayout from './layouts/MainLayout/MainLayout';
+
+const HomeComponent = React.lazy(() => import('./modules/HomePage/HomePageRouting'));
+const RoadMapComponent = React.lazy(() => import('./modules/RoadMap/RoadMapRouting'));
+const StudyComponent = React.lazy(() => import('./modules/Study/StudyRouting'));
+const BlogComponent = React.lazy(() => import('./modules/Blog/BlogRouting'));
 
 const App = (): JSX.Element => {
   return (
@@ -14,8 +17,10 @@ const App = (): JSX.Element => {
         <CssBaseline />
         <Router>
           <MainLayout>
-            <HomePageRouting />
-            <HandBookRouting />
+            <HomeComponent />
+            <RoadMapComponent />
+            <StudyComponent />
+            <BlogComponent />
           </MainLayout>
         </Router>
       </React.Suspense>

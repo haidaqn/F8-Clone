@@ -10,15 +10,15 @@ export interface MainLayoutProps {
 
 export default function MainLayout({ children }: MainLayoutProps) {
   return (
-    <Box>
+    <Stack sx={{ minHeight: '100vh' }}>
       <Header />
-      <Stack pt="12px" flexDirection="row" mt="66px" overflow="hidden overlay">
+      <Stack pt="12px" flexDirection="row" mt="66px" overflow="hidden overlay" flexGrow={1}>
         <SiderBar />
         <Box maxWidth="calc(100vw - 96px)" padding="0 40px 0 20px" flex="1" ml="96px">
           {children}
         </Box>
       </Stack>
       <Footer />
-    </Box>
+    </Stack>
   );
 }
