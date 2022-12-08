@@ -1,0 +1,62 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+
+.slick-slider .slick-arrow {
+  width: 40px;
+  height: 40px;
+  font-size: 40px;
+  background-color: transparent;
+  z-index: 10;
+}
+
+body .slick-dots {
+  bottom: -38px;
+  left: 40px;
+  text-align: left;
+}
+
+body .slick-dots li,  body .slick-dots li button {
+  width: 32px;
+}
+
+body .slick-dots li button:before {
+  background-color: #dce0e3;
+  border-radius: 4px;
+  content: "";
+  height: 8px;
+  margin-right: 10px;
+  opacity: 1;
+  transition: width .3s linear,background-color .3s linear;
+  width: 32px;
+}
+
+body .slick-dots li.slick-active, body .slick-dots li.slick-active button {
+  width: 50px;
+}
+
+body .slick-dots li.slick-active button:before {
+  background-color: #9aa6af;
+  width: 50px;
+}
+
+.slick-dots li button:focus:before, .slick-dots li button:hover:before {
+  opacity: 1;
+}
+
+.slick-dots li.slick-active button:before {
+  color: #000;
+  opacity: .75;
+}
+
