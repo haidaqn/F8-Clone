@@ -1,7 +1,29 @@
 import * as React from 'react';
 import { Avatar, Box, Button, Stack, Typography } from '@mui/material';
+import { styled } from '@mui/material/styles';
 
-export interface RoadMapProps {}
+export interface RoadMapProps { }
+
+const MyButton = styled(Button)(() => ({
+  textAlign:"center",
+  transition:"0.5s ease",
+  width: '124px',
+  marginTop:"8px",
+  padding:"10px 16px",
+  borderRadius: '16px',
+  height: '40px',
+  fontWeight: '700',
+  color: '#000',
+  fontSize: '13px',
+  backgroundColor: "white",
+  border: '2px solid black',
+  
+  '&:hover': {
+    backgroundColor: 'black',
+    color: '#fff',
+    border: '2px solid black'
+  }
+}));
 
 export default function RoadMap(props: RoadMapProps) {
   return (
@@ -205,32 +227,12 @@ export default function RoadMap(props: RoadMapProps) {
           >
             Hàng nghìn người khác đang học lộ trình giống như bạn. Hãy tham gia hỏi đáp, chia sẻ và hỗ trợ nhau trong quá trình học nhé.
           </Typography>
-          <Button
-                variant="outlined"
-                size="small"
-                sx={{
-                  textAlign:"center",
-                  transition:"0.5s ease",
-                  width: '124px',
-                  marginTop:"8px",
-                  padding:"10px 16px",
-                  borderRadius: '16px',
-                  height: '40px',
-                  fontWeight: '700',
-                  color: '#000',
-                  fontSize: '13px',
-                  backgroundColor: "white",
-                  border: '2px solid black',
-                  
-                  '&:hover': {
-                    backgroundColor: 'black',
-                    color: '#fff',
-                    border: '2px solid black'
-                  }
-                }}
+          <MyButton
+            variant="outlined"
+            size="small"
               >
-                Tìm hiểu ngay
-              </Button>
+              Tìm hiểu ngay
+          </MyButton>
         </Box>
         <Box>
           <Avatar
